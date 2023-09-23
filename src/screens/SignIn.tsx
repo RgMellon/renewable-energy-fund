@@ -1,16 +1,26 @@
-// import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { VStack, Text, Center, Heading, ScrollView } from "native-base";
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
-import { useState } from "react";
+
 import { InputPassword } from "@components/InputPassword";
+import { useDispatch } from "react-redux";
+import { login } from "../store/auth/action";
+import { Pressable } from "react-native";
 
 export function SignIn() {
-  function handleNewAccount() {
-    // navigation.navigate("signUp");
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  function handleSignIn() {
+    dispatch(login());
+  }
+
+  function handleRedirectToSignUp() {
+    navigation.navigate("SignUp");
   }
 
   return (
@@ -40,17 +50,15 @@ export function SignIn() {
 
           <InputPassword />
 
-          <Button title="Login" />
+          <Button title="Login" onPress={handleSignIn} />
         </Center>
 
         <Center mt={10}>
-          <Text color="primary.100" fontSize="sm" mb={3} fontFamily="body">
-            Don’t have an account?{" "}
-            <Text underline outlineColor={"primary.100"}>
-              Sign up
-            </Text>{" "}
-            here
-          </Text>
+          <Pressable onPress={handleRedirectToSignUp}>
+            <Text color="primary.100" fontSize="sm" mb={3} fontFamily="body">
+              Don’t have an account? <Text underline>Sign up</Text> here
+            </Text>
+          </Pressable>
         </Center>
       </VStack>
     </ScrollView>
