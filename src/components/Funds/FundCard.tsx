@@ -1,4 +1,4 @@
-import { Box, HStack, Text, theme, useTheme } from "native-base";
+import { Box, HStack, Text, theme, useTheme, Pressable } from "native-base";
 import { SvgProps } from "react-native-svg";
 
 import UpSVG from "@assets/icons/up.svg";
@@ -15,6 +15,7 @@ export type FundProps = {
 };
 
 import { FundCardLineChart } from "@components/Funds/FundCardLineChart";
+import { useNavigation } from "@react-navigation/native";
 
 export function FundCard({
   icon: Icon,
@@ -24,8 +25,15 @@ export function FundCard({
   profitPercentage,
 }: FundProps) {
   const theme = useTheme();
+  const navigation = useNavigation();
+
+  function handleNavigateToDetail() {
+    navigation.navigate("FundDetail");
+  }
+
   return (
-    <Box
+    <Pressable
+      onPress={handleNavigateToDetail}
       mr={4}
       shadow={"0.5"}
       borderWidth={"0.5"}
@@ -62,6 +70,6 @@ export function FundCard({
           </Text>
         </HStack>
       </HStack>
-    </Box>
+    </Pressable>
   );
 }
