@@ -13,6 +13,7 @@ module.exports = function (api) {
             "@screens": "./src/screens",
             "@utils": "./src/utils",
             "@routes": "./src/routes",
+            "@mocks": "./src/mocks/*",
           },
         },
       ],
