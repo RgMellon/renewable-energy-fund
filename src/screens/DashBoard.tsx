@@ -4,12 +4,10 @@ import { Funds } from "@components/Funds/Index";
 import { Header } from "@components/Header";
 import { Divider, ScrollView } from "native-base";
 import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { Feed } from "./Feed";
 
 export function DashBoard() {
-  const insets = useSafeAreaInsets();
-
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
@@ -19,7 +17,6 @@ export function DashBoard() {
       <View
         style={{
           flex: 1,
-          paddingTop: insets.top,
         }}
       >
         <Header />

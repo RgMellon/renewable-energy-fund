@@ -30,7 +30,7 @@ export function FundDetail() {
       <View
         style={{
           flex: 1,
-          paddingTop: insets.top,
+          marginBottom: 100,
         }}
       >
         <HStack justifyContent={"space-between"}>
